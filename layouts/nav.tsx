@@ -1,47 +1,44 @@
 import { AnimatePresence } from 'framer-motion';
-import { useMediaQuery } from 'react-responsive';
-import { useState } from 'react';
-import * as SC from './nav.sc';
-const MetaData = {
-  Logo: {
-    src: '/Logo.svg',
-    desc: 'Logo',
-  },
-};
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import SC from './nav.sc';
 
-const Routes = {
-  projects: {
-    link: '/projects',
-    routeName: 'Projects',
-  },
-  blog: {
-    link: '/blog',
-    routeName: 'Blog',
-  },
-};
+// TODO: Tidy up code
 const NavSection = () => {
-  const { projects, blog } = Routes;
-  const { src, desc } = MetaData.Logo;
+  const breakpoint = 960;
+  const [tablet, setTablet] = useState<boolean | string>('undefined');
 
-  const isDesktopOrLaptop = useMediaQuery({
-    minWidth: 1024,
-  });
+  useEffect(() => {
+    const handleResizeWindow = () =>
+      setTablet(window.innerWidth > breakpoint ? true : false);
+    handleResizeWindow();
+    window.addEventListener('resize', handleResizeWindow);
+    return () => {
+      window.removeEventListener('resize', handleResizeWindow);
+    };
+  }, []);
 
-  return (
+  return typeof tablet !== 'undefined' ? (
     <>
-      {isDesktopOrLaptop ? (
+      {tablet ? (
         <SC.Nav>
           <SC.NavLists>
             <SC.NavItem>
-              <SC.NavLink href="/">
-                <SC.Logo src={src} alt={desc} width={90} height={90} />
-              </SC.NavLink>
+              <Link href="/" passHref>
+                <SC.NavLink>
+                  <SC.Logo src="/Logo.svg" alt="Logo" width={50} height={50} />
+                </SC.NavLink>
+              </Link>
             </SC.NavItem>
             <SC.NavItem initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              <SC.NavLink href={projects.link}>{projects.routeName}</SC.NavLink>
+              <Link href="/projects" passHref>
+                <SC.NavLink>Projects</SC.NavLink>
+              </Link>
             </SC.NavItem>
             <SC.NavItem initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              <SC.NavLink href={blog.link}>{blog.routeName}</SC.NavLink>
+              <Link href="/blog" passHref>
+                <SC.NavLink>Blog</SC.NavLink>
+              </Link>
             </SC.NavItem>
           </SC.NavLists>
         </SC.Nav>
@@ -49,17 +46,18 @@ const NavSection = () => {
         <NavSideBar />
       )}
     </>
-  );
+  ) : null;
 };
 
 const NavSideBar = () => {
-  const { projects, blog } = Routes;
   const [isTap, setTap] = useState(false);
+  const handleClick = () => setTap(!isTap);
+  useEffect(() => {}, []);
   const NavButton = () => {
     return (
       <>
         <SC.NavButton
-          onClick={() => setTap(!isTap)}
+          onClick={handleClick}
           whileTap={{ scale: 1.2 }}
           whileHover={{ scale: 1.1 }}
         >
@@ -85,9 +83,21 @@ const NavSideBar = () => {
                 }}
                 exit={{ opacity: 0, y: 200 }}
               >
-                <SC.NavLink href={projects.link}>
-                  {projects.routeName}
-                </SC.NavLink>
+                <Link href="/" passHref>
+                  <SC.NavLink>Home</SC.NavLink>
+                </Link>
+              </SC.NavItem>
+              <SC.NavItem
+                initial={{ opacity: 0, y: 200 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                exit={{ opacity: 0, y: 200 }}
+              >
+                <Link href="/projects" passHref>
+                  <SC.NavLink>Projects</SC.NavLink>
+                </Link>
               </SC.NavItem>
               <SC.NavItem
                 initial={{ opacity: 0, y: 200 }}
@@ -98,7 +108,9 @@ const NavSideBar = () => {
                 }}
                 exit={{ opacity: 0, y: 200, transition: { delay: 0.1 } }}
               >
-                <SC.NavLink href={blog.link}>{blog.routeName}</SC.NavLink>
+                <Link href="/blog" passHref>
+                  <SC.NavLink>Blog</SC.NavLink>
+                </Link>
               </SC.NavItem>
             </SC.NavLists>
           </SC.SideBar>
