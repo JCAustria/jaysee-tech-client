@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useContext, useState, useEffect, useMemo } from "react";
-import * as SC from "./profile.sc";
+import React, { useContext, useState, useEffect, useMemo } from 'react';
+import SC from './profile.sc';
 const ProfileSection = () => {
   return (
     <>
