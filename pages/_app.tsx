@@ -1,20 +1,16 @@
-import App from "next/app";
-import type { AppProps, AppContext } from "next/app";
-import Head from "next/head";
-import { createContext } from "react";
-import { createGlobalStyle } from "styled-components";
-import { fetchAPI } from "lib/api";
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { createGlobalStyle } from 'styled-components';
 
-export const GlobalContext = createContext({});
 function JayseeApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <link rel="apple-touch-icon" href="/logo192.png" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Raleway:wght@300;400;500;600;700;800;900&display=swap"
