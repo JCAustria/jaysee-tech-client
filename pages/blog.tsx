@@ -1,33 +1,38 @@
-import Nav from "@/layouts/nav";
-import { fetchAPI } from "lib/api";
-import { GetStaticProps } from "next";
-
+import NavSection from '@/layouts/nav';
+import SC from 'components/card.sc';
+import { fetchAPI } from 'lib/api';
+import { fetchMedia } from 'lib/media';
+import { GetStaticProps } from 'next';
 type BlogProps = {
-  posts: any;
-  author: any;
+  posts: PostProps[];
 };
-const Blog = ({ posts, author }: BlogProps) => {
+
+type PostProps = {
+  slug: string | number | null | undefined;
+  image: { url: string };
+  title: string;
+};
+
+const Blog: React.FC<BlogProps> = ({ posts }) => {
   return (
     <>
-      <Nav />
-      {console.log(posts, author)}
-      <main>
-        <header>
-          <h1>{posts[0].title}</h1>
-        </header>
-        <article>
-          <p>{posts[0].content}</p>
-        </article>
-      </main>
+      <NavSection />
+      <SC.Wrapper>
+        {posts.map((post: PostProps) => {
+          return (
+            <SC.Card key={post.slug}>
+              <SC.CoverIMG src={fetchMedia(post.image)} />
+              <SC.Heading>{post.title}</SC.Heading>
+            </SC.Card>
+          );
+        })}
+      </SC.Wrapper>
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [posts, author] = await Promise.all([
-    fetchAPI("/posts?status=published"),
-    fetchAPI("/authors"),
-  ]);
-  return { props: { posts, author } };
+  const posts = await fetchAPI('/articles?status=published');
+  return { props: { posts } };
 };
 export default Blog;
