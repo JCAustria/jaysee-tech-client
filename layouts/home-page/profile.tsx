@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useContext, useState, useEffect, useMemo } from 'react';
 import SC from './profile.sc';
+
 const ProfileSection = () => {
   return (
-    <>
+    <SC.ProfileContents>
       <SC.ProfileHeader>Who am I?</SC.ProfileHeader>
       <SC.ProfileInfo>
         I am a student that is studying frontend development that is based in
@@ -23,7 +22,8 @@ const ProfileSection = () => {
         only build websites that are small and usually cannot follow best
         practices because I am still bad at it.
       </SC.ProfileInfo>
-    </>
+    </SC.ProfileContents>
   );
 };
+
 export default ProfileSection;

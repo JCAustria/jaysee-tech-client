@@ -1,13 +1,13 @@
-import NavSection from '@/layouts/nav';
-import SC from 'components/card.sc';
+import Nav from 'components/nav';
 import { fetchAPI } from 'lib/api';
-import { fetchMedia } from 'lib/media';
 import { GetStaticProps } from 'next';
+import SC from 'components/blog.sc';
+import Card from 'components/card';
 type BlogProps = {
   posts: PostProps[];
 };
 
-type PostProps = {
+export type PostProps = {
   slug: string | number | null | undefined;
   image: { url: string };
   title: string;
@@ -16,17 +16,14 @@ type PostProps = {
 const Blog: React.FC<BlogProps> = ({ posts }) => {
   return (
     <>
-      <NavSection />
-      <SC.Wrapper>
-        {posts.map((post: PostProps) => {
-          return (
-            <SC.Card key={post.slug}>
-              <SC.CoverIMG src={fetchMedia(post.image)} />
-              <SC.Heading>{post.title}</SC.Heading>
-            </SC.Card>
-          );
-        })}
-      </SC.Wrapper>
+      <Nav />
+      <SC.MainBlogPage>
+        <SC.Wrapper>
+          {posts.map((post: PostProps) => {
+            return <Card article={post} key={post.slug} />;
+          })}
+        </SC.Wrapper>
+      </SC.MainBlogPage>
     </>
   );
 };

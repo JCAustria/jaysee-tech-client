@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import { motion } from 'framer-motion';
-import styled from 'styled-components';
-import Hero from '@/layouts/hero';
-import NavSection from '@/layouts/nav';
-import ProfileSection from '@/layouts/profile';
+import Hero from 'layouts/home-page/hero';
+import NavSection from 'components/nav';
+import SkillsSection from 'layouts/home-page/skills';
+import ProfileSection from 'layouts/home-page/profile';
+import FooterSection from 'layouts/home-page/footer';
 
 function Home() {
   return (
@@ -18,19 +18,11 @@ function Home() {
       </Head>
       <NavSection />
       <Hero />
-      <Main>
-        <ProfileSection />
-      </Main>
+      <SkillsSection />
+      <ProfileSection />
+      <FooterSection />
     </>
   );
 }
-
-const Main = styled(motion.main)`
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  padding: 2rem 2rem;
-  background-color: rgba(9, 143, 185, 1);
-`;
 
 export default Home;
