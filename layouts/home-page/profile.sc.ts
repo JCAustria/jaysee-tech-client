@@ -4,43 +4,59 @@ const fontFamily = css`
   font-family: 'Merriweather', serif;
 `;
 const fontColor = css`
-  color: rgba(30,59,86,1);
+  color: rgba(30, 59, 86, 1);
 `;
 
 const textLayout = css`
   display: block;
-  margin: 1.75rem auto;
-  text-align:center;
-`
+  margin: 0 auto;
+  text-align: center;
+  @media screen and (min-width: 1024px) {
+    text-align: left;
+  }
+`;
 
-const container = css`
-  padding: 0 1.5rem;
-`
+const textContainer = css`
+  padding: 0.75rem 1rem;
+`;
 class SC {
   static Contents = styled.section`
     ${fontFamily}
     ${fontColor}
+    ${textContainer}
     background-color: rgba(248,249,255,1);
-    height: 100vh;
     margin: 0;
-  `
+  `;
   static Header = styled.h2`
     ${textLayout}
+    letter-spacing: -0.8px;
+    font-size: clamp(24px, 4vw, 72px);
     font-weight: 900;
+    max-width: 320px;
+    @media screen and (min-width: 1024px) {
+      padding: 2rem 0;
+      margin: 0;
+      max-width: 750px;
+    }
   `;
 
   static Info = styled.p`
     ${textLayout}
-    ${container}
+    ${textContainer}
     font-weight: 400;
+    letter-spacing: 0.5px;
     text-align: left;
-    @media screen and (min-width: 1024px){
-      max-width: 1100px;
+    font-size: clamp(16px, 2vw, 24px);
+    @media screen and (min-width: 1024px) {
+      margin: 0;
+      max-width: 800px;
     }
   `;
   static Question = styled.span`
-      ${textLayout}
-      ${container}
+    ${textLayout}
+    padding: 1.75rem 1.5rem;
+    font-weight: 600;
+    font-size: clamp(18px, 2vw, 36px);
   `;
 }
 

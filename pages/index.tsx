@@ -5,7 +5,7 @@ import SkillsSection from 'layouts/home-page/skills';
 import ProfileSection from 'layouts/home-page/profile';
 import FooterSection from 'layouts/home-page/footer';
 
-function Home() {
+function Home(): JSX.Element {
   return (
     <>
       <Head>
@@ -17,9 +17,11 @@ function Home() {
         <title>Jaysee | Frontend Developer</title>
       </Head>
       <NavSection />
-      <Hero />
-      <SkillsSection />
-      <ProfileSection />
+      <main>
+        <Hero />
+        <SkillsSection />
+        <ProfileSection />
+      </main>
       <FooterSection />
     </>
   );

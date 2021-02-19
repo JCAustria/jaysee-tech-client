@@ -4,7 +4,7 @@ const ProfileSection = () => {
   return (
     <SC.Contents>
       <SC.Question>Or wanna get straight to the point?</SC.Question>
-      <SC.Header>Who is this guy?</SC.Header>
+      <SC.Header>Who am I?</SC.Header>
       <SC.Info>
         I am John Carlo Austria and I am a frontend developer based in the
         philippines, I specialize in creating websites using HTML,CSS ,

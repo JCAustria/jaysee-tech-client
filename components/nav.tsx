@@ -3,6 +3,7 @@ import SC from './nav.sc';
 import { BsCollection } from '@react-icons/all-files/bs/BsCollection';
 import { BsNewspaper } from '@react-icons/all-files/bs/BsNewspaper';
 import { BsFillHouseFill } from '@react-icons/all-files/bs/BsFillHouseFill';
+import { IconContext } from '@react-icons/all-files/lib';
 
 const NavSection = () => {
   return (
@@ -20,9 +21,17 @@ const NavSection = () => {
           <SC.NavItem>
             <Link href="/" passHref>
               <SC.NavLink>
-                <SC.Container>
-                  <BsFillHouseFill />
-                </SC.Container>
+                <IconContext.Provider
+                  value={{
+                    color: 'white',
+                    size: '25px',
+                    style: { alignContent: 'center' },
+                  }}
+                >
+                  <div>
+                    <BsFillHouseFill title="Home" />
+                  </div>
+                </IconContext.Provider>
                 Home
               </SC.NavLink>
             </Link>
@@ -30,9 +39,17 @@ const NavSection = () => {
           <SC.NavItem initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <Link href="/projects" passHref>
               <SC.NavLink>
-                <SC.Container>
-                  <BsCollection />
-                </SC.Container>
+                <IconContext.Provider
+                  value={{
+                    color: 'white',
+                    size: '25px',
+                    style: { alignContent: 'center' },
+                  }}
+                >
+                  <div>
+                    <BsCollection title="Projects" />
+                  </div>
+                </IconContext.Provider>
                 Projects
               </SC.NavLink>
             </Link>
@@ -40,9 +57,17 @@ const NavSection = () => {
           <SC.NavItem initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <Link href="/blog" passHref>
               <SC.NavLink>
-                <SC.Container>
-                  <BsNewspaper />
-                </SC.Container>
+                <IconContext.Provider
+                  value={{
+                    color: 'white',
+                    size: '25px',
+                    style: { alignContent: 'center' },
+                  }}
+                >
+                  <div>
+                    <BsNewspaper title="Blog" />
+                  </div>
+                </IconContext.Provider>
                 Blog
               </SC.NavLink>
             </Link>
