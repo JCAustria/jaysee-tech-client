@@ -2,27 +2,27 @@ import SC from './profile.sc';
 
 const ProfileSection = () => {
   return (
-    <SC.ProfileContents>
-      <SC.ProfileHeader>Who am I?</SC.ProfileHeader>
-      <SC.ProfileInfo>
-        I am a student that is studying frontend development that is based in
-        the philippines
-      </SC.ProfileInfo>
-      <SC.ProfileHeader>What am I currently doing?</SC.ProfileHeader>
-      <SC.ProfileInfo>
-        I am currently learning the fundamentals of web development (HTML, CSS,
-        JavaScript).
-      </SC.ProfileInfo>
-      <SC.ProfileHeader>Can you currently build a website?</SC.ProfileHeader>
-      <SC.ProfileInfo>
-        Yes and No. Yes, because I built this with react along with other web
-        technologies that will make this website more scalable and the code is
-        also open source on github. And No, because currently, I cannot handle
-        the complexity of a large enterprise application that uses react. I can
-        only build websites that are small and usually cannot follow best
-        practices because I am still bad at it.
-      </SC.ProfileInfo>
-    </SC.ProfileContents>
+    <SC.Contents>
+      <SC.Question>Or wanna get straight to the point?</SC.Question>
+      <SC.Header>Who is this guy?</SC.Header>
+      <SC.Info>
+        I am John Carlo Austria and I am a frontend developer based in the
+        philippines, I specialize in creating websites using HTML,CSS ,
+        JavaScript and React
+      </SC.Info>
+      <SC.Header>What am I currently Doing?</SC.Header>
+      <SC.Info>
+        I am currently studying at a Public School in the Philippines, as I am
+        learning in this school, I am also teaching myself web development
+        online.
+      </SC.Info>
+      <SC.Header>Are you currently looking for work?</SC.Header>
+      <SC.Info>
+        As I have said, I am currently studying and I only work on this website
+        whenever I have the free time. I can make websites, but only when I have
+        time for it.
+      </SC.Info>
+    </SC.Contents>
   );
 };
 
