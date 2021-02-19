@@ -21,8 +21,8 @@ class SC {
   static Logo = styled(Image)`
     display:inline;
     width: fit-content;
-    padding-left: 5rem;
-    margin:0;
+    padding: 1rem 0 0 5rem;
+    margin: 0.75rem 0;
   `;
 
   static NavLists = styled(motion.ul)`
@@ -32,25 +32,25 @@ class SC {
   align-items:center;
   height: inherit;
   margin: auto 0;
-  padding: 0;
+  padding: 1rem 0 0;
   list-style-type: none;
   @media screen and (min-width: 960px) {
     margin-right: 7rem;
+    padding: 0.25rem 0 0;
   }
 `;
 
   static NavItem = styled(motion.li)`
-  padding: 0.625rem 0.75rem 0.625rem 0.75rem;
   justify-content: space-evenly;
   border-radius: 12px;
   text-align:center;
   width: fit-content;
+  padding: 0 0.8rem;
   @media screen and (min-width: 1024px) {
     display:flex;
     justify-content: normal;
-    flex: 0.3 0 4%;
     background-color: rgba(0, 0, 0, 0);
-    margin: 0 0.5rem;
+    margin: 0 auto;
     height: auto;
     border-radius: 0;
     &:nth-child(1){

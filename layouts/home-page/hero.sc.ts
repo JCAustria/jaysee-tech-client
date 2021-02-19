@@ -3,9 +3,11 @@ import styled from 'styled-components';
 class SC {
   static Container = styled.div`
     padding: 2rem 1rem;
+    margin: 0 auto;
     width: fit-content;
     @media screen and (min-width: 960px) {
       padding: 4rem  0 0 5rem;
+      margin: 0;
     }
   `;
 
