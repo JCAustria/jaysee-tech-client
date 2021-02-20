@@ -43,14 +43,14 @@ class SC {
     }
   `;
 
-  static Header = styled.section`
+  static Header = styled.header`
     background: rgba(9, 98, 126, 1);
     height: 100vh;
     @media screen and (min-width: 1024px) {
       background: linear-gradient(
         90deg,
-        rgba(9, 98, 126, 1) 40%,
-        rgba(143, 191, 206, 1) 100%
+        rgba(9, 98, 126, 1) 20%,
+        rgba(60, 124, 144, 1) 90%
       );
     }
   `;

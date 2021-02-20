@@ -1,9 +1,10 @@
-import Head from 'next/head';
-import Hero from 'layouts/home-page/hero';
+import { MainContents } from 'components/index.sc';
 import NavSection from 'components/nav';
-import SkillsSection from 'layouts/home-page/skills';
-import ProfileSection from 'layouts/home-page/profile';
 import FooterSection from 'layouts/home-page/footer';
+import Hero from 'layouts/home-page/hero';
+import ProfileSection from 'layouts/home-page/profile';
+import SkillsSection from 'layouts/home-page/skills';
+import Head from 'next/head';
 
 function Home(): JSX.Element {
   return (
@@ -17,11 +18,11 @@ function Home(): JSX.Element {
         <title>Jaysee | Frontend Developer</title>
       </Head>
       <NavSection />
-      <main>
-        <Hero />
+      <Hero />
+      <MainContents>
         <SkillsSection />
         <ProfileSection />
-      </main>
+      </MainContents>
       <FooterSection />
     </>
   );

@@ -1,16 +1,11 @@
 {
   "name": "jaysee.tech",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "framer-motion": "^3.3.0",
-    "next": "^10.0.6",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "styled-components": "^5.2.1",
-    "typescript": "^4.1.3",
-    "web-vitals": "^1.1.0"
-  },
+  "private": "true",
+  "author": "John Carlo Austria <johncarloaustria@protonmail.com>",
+  "description": "jaysee.tech monorepo",
+  "repository": "git@github.com:JCAustria/jaysee.tech.git",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,6 +15,16 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged && npm run lint"
     }
+  },
+  "dependencies": {
+    "@artsy/fresnel": "^1.3.1",
+    "framer-motion": "^3.3.0",
+    "next": "^10.0.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1",
+    "typescript": "^4.1.3",
+    "web-vitals": "^1.1.0"
   },
   "devDependencies": {
     "@react-icons/all-files": "^4.1.0",

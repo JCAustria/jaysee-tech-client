@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 class SC {
-  static CoverIMG = styled('img')`
+  static CoverIMG = styled.img`
     display: inline;
     width: 50%;
     height: auto;
@@ -9,7 +8,7 @@ class SC {
     max-height: 400px;
     border-radius: 15px;
   `;
-  static Card = styled(motion.article)`
+  static Card = styled.article`
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: 1fr;
@@ -18,26 +17,26 @@ class SC {
     border-radius: 15px;
     filter: drop-shadow(0px 4px 16px rgba(0, 0, 0, 0.25));
   `;
-  static Caption = styled(motion.figcaption)`
+  static Caption = styled.figcaption`
     display: inline-block;
   `;
-  static CardTop = styled(motion.figure)`
+  static CardTop = styled.figure`
     display: inline;
     margin: 0;
   `;
-  static CardBottom = styled(motion.section)`
+  static CardBottom = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: auto;
   `;
-  static Heading = styled(motion.h1)`
+  static Heading = styled.h1`
     font-family: 'Raleway', sans-serif;
     font-size: 1.2rem;
     text-align: center;
     text-transform: capitalize;
   `;
-  static Anchor = styled(motion.a)`
+  static Anchor = styled.a`
     color: #222;
     text-decoration: none;
     font-size: 1.2rem;

@@ -21,6 +21,11 @@ function JayseeApp({ Component, pageProps }: AppProps) {
           href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap"
           rel="stylesheet"
         />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <GlobalStyle />
       <Component {...pageProps} />
@@ -37,21 +42,18 @@ const GlobalStyle = createGlobalStyle`
 }
 
 :root {
-  -moz-tab-size: 4;
   tab-size: 4;
 }
 html {
   line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
-}
-body {
-  font-family: system-ui, -apple-system,
+   font-family: system-ui, -apple-system,
     'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  margin: 0;
 }
+
 
 hr {
   height: 0;
@@ -126,10 +128,10 @@ button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
-  -webkit-appearance: button;
+  appearance: button;
 }
 
-::-moz-focus-inner {
+/* ::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -141,7 +143,7 @@ button,
 
 :-moz-ui-invalid {
   box-shadow: none;
-}
+} */
 
 legend {
   padding: 0;
@@ -151,18 +153,18 @@ progress {
   vertical-align: baseline;
 }
 
-::-webkit-inner-spin-button,
+/* ::-webkit-inner-spin-button,
 ::-webkit-outer-spin-button {
   height: auto;
-}
+} */
 
 
-[type='search'] {
+/* [type='search'] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
-}
+} */
 
-::-webkit-search-decoration {
+/* ::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -170,7 +172,7 @@ progress {
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   font: inherit;
-}
+} */
 
 summary {
   display: list-item;
