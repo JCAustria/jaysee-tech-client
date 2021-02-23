@@ -1,6 +1,6 @@
-import { MainContents } from 'components/index.sc';
-import NavSection from 'components/nav';
-import FooterSection from 'layouts/home-page/footer';
+import styled from 'styled-components';
+import NavSection from 'components/ui/nav';
+import FooterSection from 'components/ui/footer';
 import Hero from 'layouts/home-page/hero';
 import ProfileSection from 'layouts/home-page/profile';
 import SkillsSection from 'layouts/home-page/skills';
@@ -27,5 +27,8 @@ function Home(): JSX.Element {
     </>
   );
 }
-
 export default Home;
+
+export const MainContents = styled.main`
+  font-family: 'Raleway', sans-serif;
+`;
