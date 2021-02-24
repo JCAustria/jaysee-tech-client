@@ -1,4 +1,3 @@
-import SC from 'components/styled/blog.sc';
 import Card from 'components/ui/card';
 import Nav from 'components/ui/nav';
 import { fetchAPI } from 'lib/api';
@@ -40,6 +39,7 @@ export default Blog;
 class SC {
   static MainBlogPage = styled.main`
     color: rgba(30, 59, 86, 1);
+    background-color: rgba(230, 171, 35, 1);
     overflow: visible;
   `;
   static Wrapper = styled.section`
@@ -47,10 +47,9 @@ class SC {
     grid-template-columns: repeat(1, 1fr);
     place-items: center;
     grid-gap: 2rem;
-    margin: 0 0 0 0;
+    padding: 2rem 15rem;
     @media screen and (min-width: 60em) {
-      margin: 2rem auto;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
   `;
 }

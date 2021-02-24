@@ -29,6 +29,6 @@ function Home(): JSX.Element {
 }
 export default Home;
 
-export const MainContents = styled.main`
+const MainContents = styled.main`
   font-family: 'Raleway', sans-serif;
 `;

@@ -6,6 +6,7 @@ import { createMedia } from '@artsy/fresnel';
 import { DiHtml5 } from '@react-icons/all-files/di/DiHtml5';
 import { DiCss3 } from '@react-icons/all-files/di/DiCss3';
 import { DiReact } from '@react-icons/all-files/di/DiReact';
+import { DiJavascript1 } from '@react-icons/all-files/di/DiJavascript1';
 import { IconContext } from '@react-icons/all-files/lib';
 
 // TODO: Make code cleaner
@@ -38,32 +39,50 @@ const SkillsSection = () => {
           <Skills.Card>
             <MediaContextProvider>
               <Media lessThan="md">
-                <Skills.CardContainer>
-                  <IconContext.Provider value={{ size: '3.25rem' }}>
-                    <div>
-                      <DiHtml5 color="darkorange" title="Html5 Logo" />
-                    </div>
-                    <div>
-                      <DiCss3 color="blue" title="CSS3 Logo" />
-                    </div>
-                    <div>
-                      <DiReact color="lightblue" title="React Logo" />
-                    </div>
-                  </IconContext.Provider>
-                </Skills.CardContainer>
+                <IconContext.Provider value={{ size: '80px' }}>
+                  <Skills.IconContainer>
+                    <DiHtml5 color="rgb(227,76,38)" title="Html5 Logo" />
+                    <Skills.ParagraphBig>HTML5</Skills.ParagraphBig>
+                  </Skills.IconContainer>
+                  <Skills.IconContainer>
+                    <DiCss3 color="rgb(41,101,241)" title="CSS3 Logo" />
+                    <Skills.ParagraphBig>CSS3</Skills.ParagraphBig>
+                  </Skills.IconContainer>
+                  <Skills.IconContainer>
+                    <DiReact color="rgb(96,218,251)" title="React Logo" />
+                    <Skills.ParagraphBig>React</Skills.ParagraphBig>
+                  </Skills.IconContainer>
+                  <Skills.IconContainer>
+                    <DiJavascript1
+                      color="rgb(214,218,79)"
+                      title="Javascript Logo"
+                    />
+                    <Skills.ParagraphBig>JavaScript</Skills.ParagraphBig>
+                  </Skills.IconContainer>
+                </IconContext.Provider>
               </Media>
               <Media greaterThan="md">
                 <Skills.CardContainer>
-                  <IconContext.Provider value={{ size: '4.25rem' }}>
-                    <div>
-                      <DiHtml5 color="darkorange" title="Html5 Logo" />
-                    </div>
-                    <div>
-                      <DiCss3 color="blue" title="CSS3 Logo" />
-                    </div>
-                    <div>
-                      <DiReact color="lightblue" title="React Logo" />
-                    </div>
+                  <IconContext.Provider value={{ size: '120px' }}>
+                    <Skills.IconContainer>
+                      <DiHtml5 color="rgb(227,76,38)" title="Html5 Logo" />
+                      <Skills.ParagraphBig>HTML5</Skills.ParagraphBig>
+                    </Skills.IconContainer>
+                    <Skills.IconContainer>
+                      <DiCss3 color="rgb(41,101,241)" title="CSS3 Logo" />
+                      <Skills.ParagraphBig>CSS3</Skills.ParagraphBig>
+                    </Skills.IconContainer>
+                    <Skills.IconContainer>
+                      <DiReact color="rgb(96,218,251)" title="React Logo" />
+                      <Skills.ParagraphBig>React</Skills.ParagraphBig>
+                    </Skills.IconContainer>
+                    <Skills.IconContainer>
+                      <DiJavascript1
+                        color="rgb(214,218,79)"
+                        title="Javascript Logo"
+                      />
+                      <Skills.ParagraphBig>JavaScript</Skills.ParagraphBig>
+                    </Skills.IconContainer>
                   </IconContext.Provider>
                 </Skills.CardContainer>
               </Media>
@@ -80,9 +99,8 @@ export default SkillsSection;
 class Skills {
   static Card = styled.div`
     display: inline-block;
-    /* width: 16.25rem;
-    height: 17.5rem; */
     height: fit-content;
+    padding: 2rem 3rem;
     background: rgba(248, 249, 255, 1);
     border: 4px solid rgba(30, 59, 86, 1);
     border-radius: 20px;
@@ -93,11 +111,6 @@ class Skills {
     }
   `;
 
-  static CardContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 1rem;
-  `;
   static Content = styled.section`
     background-color: rgba(230, 171, 35, 1);
   `;
@@ -114,6 +127,15 @@ class Skills {
       grid-template-columns: repeat(2, 1fr);
     }
   `;
+  static CardContainer = styled.div`
+    padding: 1rem;
+    margin: 0 auto;
+  `;
+  static IconContainer = styled.div`
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+  `;
 
   static ParagraphBig = styled.p<SCProps>`
     color: rgba(30, 59, 86, 1);
@@ -122,6 +144,7 @@ class Skills {
     font-size: clamp(18px, 5vw, 48px);
   `;
   static ParagraphMedium = styled.p<SCProps>`
+    color: rgba(30, 59, 86, 1);
     font-family: 'Roboto Mono', monospace;
     font-weight: bold;
     font-size: clamp(0.8rem, 4vw, 1.25rem);
