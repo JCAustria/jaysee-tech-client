@@ -9,9 +9,13 @@ type CardProps = {
 const Card: React.FC<CardProps> = ({ article }) => {
   return (
     <>
-      <CardSC.Container whileHover={{ scale: 1.1 }}>
+      <CardSC.Container
+        whileHover={{ scale: 1.04, type: 'spring' }}
+        whileTap={{ scale: 1.1, type: 'spring' }}
+        transition={{ duration: 0.2 }}
+      >
         <Link as={`/posts/${article.slug}`} href="/posts/[id]">
-          <CardSC.Anchor whileHover={{ scale: 1.1 }}>
+          <CardSC.Anchor whileHover={{ scale: 1.05 }}>
             <CardSC.Card key={article.slug}>
               <CardSC.CoverIMG src={fetchMedia(article.image)} />
               <CardSC.CardTop>
@@ -53,7 +57,6 @@ class CardSC {
   `;
   static Card = styled.article`
     display: grid;
-    max-width: fit-content;
     margin: 0 auto;
     grid-template-rows: repeat(1, 1fr);
     grid-template-columns: 1fr;

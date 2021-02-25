@@ -38,7 +38,7 @@ const textDefault = css`
 
 class SC {
   static Container = styled.div`
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
     margin: 0 auto;
     width: fit-content;
     @media screen and (min-width: 960px) {
@@ -106,8 +106,8 @@ class SC {
   static ContactBtn = styled.a`
     cursor: pointer;
     display: block;
-    font-weight: 600;
     ${textDefault}
+    font-weight: 600;
     font-size: clamp(14px, 3vw, 31px);
     background: rgba(180, 104, 128, 1);
     padding: 1.2rem;
