@@ -4,7 +4,6 @@
       "next/babel",
       {
         "preset-react": {
-          "sourceMap": true,
           "runtime": "automatic",
           "importSource": "@emotion/react"
         }

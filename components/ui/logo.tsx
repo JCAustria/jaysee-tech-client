@@ -2,7 +2,7 @@ import { fetchMedia } from 'lib/media';
 import styled from '@emotion/styled';
 import { IMGProps } from 'types/props';
 
-const Image: React.FC<IMGProps> = ({ image }, { className }) => {
+const Logo: React.FC<IMGProps> = ({ image }, { className }) => {
   const imageUrl = fetchMedia(image);
 
   return (
@@ -16,9 +16,8 @@ const Image: React.FC<IMGProps> = ({ image }, { className }) => {
 
 class Styled {
   static Image = styled.img`
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
+    width: 55px;
+    height: 55px;
   `;
 }
-export default Image;
+export default Logo;

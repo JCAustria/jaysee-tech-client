@@ -30,6 +30,7 @@ function Home(): JSX.Element {
     </>
   );
 }
+
 export default Home;
 
 // Reusable CSS

@@ -1,14 +1,18 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import Logo from './logo';
 import { BsCollection } from '@react-icons/all-files/bs/BsCollection';
 import { BsNewspaper } from '@react-icons/all-files/bs/BsNewspaper';
 import { BsFillHouseFill } from '@react-icons/all-files/bs/BsFillHouseFill';
-import { IconContext } from '@react-icons/all-files/lib';
 import { css } from '@emotion/react';
+import { IconContext } from '@react-icons/all-files/lib';
+import { GlobalContext } from 'pages/_app';
+import { useContext } from 'react';
 
-const NavSection = () => {
+const NavSection: React.FC = () => {
+  const { logo } = useContext(GlobalContext);
+  console.log(logo);
   return (
     <>
       <SC.Nav>
@@ -16,11 +20,10 @@ const NavSection = () => {
           <SC.NavItem>
             <Link href="/" passHref>
               <SC.NavLink>
-                <SC.Logo src="/Logo.svg" alt="Logo" width={55} height={55} />
+                <Logo image={logo} />
               </SC.NavLink>
             </Link>
           </SC.NavItem>
-
           <SC.NavItem>
             <Link href="/" passHref>
               <SC.NavLink>
@@ -39,7 +42,7 @@ const NavSection = () => {
               </SC.NavLink>
             </Link>
           </SC.NavItem>
-          <SC.NavItem>
+          {/* <SC.NavItem>
             <Link href="/projects" passHref>
               <SC.NavLink>
                 <IconContext.Provider
@@ -56,7 +59,7 @@ const NavSection = () => {
                 Projects
               </SC.NavLink>
             </Link>
-          </SC.NavItem>
+          </SC.NavItem> */}
           <SC.NavItem>
             <Link href="/blog" passHref>
               <SC.NavLink>
@@ -104,12 +107,6 @@ class SC {
       position: static;
       height: 4.688rem;
     }
-  `;
-  static Logo = styled(Image)`
-    display: inline;
-    width: fit-content;
-    padding: 1rem 0 0 5rem;
-    margin: 0.75rem 0;
   `;
 
   static NavLists = styled(motion.ul)`
