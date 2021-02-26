@@ -48,19 +48,21 @@ const Post = ({ article }: any) => {
     </>
   );
 };
-interface ArticleProps {
-  article: string;
-  slug: string;
-}
+type ArticleProps = {
+  article: string[];
+  slug: string[];
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = await fetchAPI('/articles');
+  const posts = await fetchAPI('/articles');
+  const paths = posts.map((article: ArticleProps) => ({
+    params: {
+      slug: article.slug,
+    },
+  }));
+
   return {
-    paths: articles.map((article: ArticleProps) => ({
-      params: {
-        slug: article.slug,
-      },
-    })),
+    paths: paths,
     fallback: false,
   };
 };
