@@ -1,5 +1,5 @@
 import { fetchMedia } from 'lib/media';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { IMGProps } from 'types/props';
 
 const Image: React.FC<IMGProps> = ({ image }) => {

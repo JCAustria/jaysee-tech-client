@@ -7,7 +7,7 @@
     "plugin:prettier/react",
     "plugin:prettier/@typescript-eslint"
   ],
-  "plugins": ["@typescript-eslint", "react", "prettier"],
+  "plugins": ["@typescript-eslint", "react", "prettier", "@emotion"],
   "rules": {
     "react/react-in-jsx-scope": "off"
   },

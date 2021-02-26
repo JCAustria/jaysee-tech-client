@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { BiArrowBack } from '@react-icons/all-files/bi/BiArrowBack';
 
 const BackButton = () => {

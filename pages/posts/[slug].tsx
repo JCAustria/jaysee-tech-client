@@ -3,7 +3,7 @@ import Nav from 'components/ui/nav';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { fetchAPI } from 'lib/api';
 import ReactMarkdown from 'react-markdown';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { fetchMedia } from 'lib/media';
 import Image from 'components/ui/image';
 import Moment from 'react-moment';

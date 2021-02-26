@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { BsCollection } from '@react-icons/all-files/bs/BsCollection';
 import { BsNewspaper } from '@react-icons/all-files/bs/BsNewspaper';
 import { BsFillHouseFill } from '@react-icons/all-files/bs/BsFillHouseFill';
 import { IconContext } from '@react-icons/all-files/lib';
+import { css } from '@emotion/react';
 
 const NavSection = () => {
   return (
@@ -38,7 +39,7 @@ const NavSection = () => {
               </SC.NavLink>
             </Link>
           </SC.NavItem>
-          <SC.NavItem initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <SC.NavItem>
             <Link href="/projects" passHref>
               <SC.NavLink>
                 <IconContext.Provider
@@ -56,7 +57,7 @@ const NavSection = () => {
               </SC.NavLink>
             </Link>
           </SC.NavItem>
-          <SC.NavItem initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <SC.NavItem>
             <Link href="/blog" passHref>
               <SC.NavLink>
                 <IconContext.Provider
@@ -83,6 +84,9 @@ const NavSection = () => {
 export default NavSection;
 
 class SC {
+  static Flex = css`
+    display: flex;
+  `;
   static Container = styled.div`
     margin: 0 auto;
   `;
@@ -109,7 +113,7 @@ class SC {
   `;
 
   static NavLists = styled(motion.ul)`
-    display: flex;
+    ${SC.Flex}
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -136,7 +140,7 @@ class SC {
       margin: 0 auto;
       height: auto;
       border-radius: 0;
-      &:nth-child(1) {
+      &:nth-of-type(1) {
         margin-left: 5rem;
         flex: 5 2 4%;
       }

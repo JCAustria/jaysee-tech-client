@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import { css, ThemeProvider } from '@emotion/react';
 import NavSection from 'components/ui/nav';
 import FooterSection from 'components/ui/footer';
 import Hero from 'layouts/home-page/hero';
@@ -18,17 +19,39 @@ function Home(): JSX.Element {
         <title>Jaysee | Frontend Developer</title>
       </Head>
       <NavSection />
-      <Hero />
-      <MainContents>
-        <SkillsSection />
-        <ProfileSection />
-      </MainContents>
-      <FooterSection />
+      <ThemeProvider theme={themeTypography}>
+        <MainContents>
+          <Hero />
+          <SkillsSection />
+          <ProfileSection />
+          <FooterSection />
+        </MainContents>
+      </ThemeProvider>
     </>
   );
 }
 export default Home;
 
-const MainContents = styled.main`
-  font-family: 'Raleway', sans-serif;
+// Reusable CSS
+const themeTypography = {
+  fontFamily: {
+    fontSans: "'Raleway',sans-serif",
+    fontSerif: "'Merriweather',sans-serif",
+    fontMonospace: "'Roboto Mono', monospace",
+  },
+  fontColors: {
+    color: 'rgba(35, 38, 91, 1)',
+  },
+};
+
+const paddingSm = css`
+  padding: 1rem;
 `;
+const paddingMd = css`
+  padding: 1.25rem;
+`;
+const paddingLg = css`
+  padding: 2rem;
+`;
+
+const MainContents = styled.main``;

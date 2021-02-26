@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import 'node_modules/modern-normalize/modern-normalize.css';
-import { createGlobalStyle } from 'styled-components';
+import 'modern-normalize';
 
 function JayseeApp({ Component, pageProps }: AppProps) {
   return (
@@ -28,17 +27,9 @@ function JayseeApp({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
       </Head>
-      <GlobalStyle />
       <Component {...pageProps} />
     </>
   );
 }
 
-const GlobalStyle = createGlobalStyle`
-html {
-  margin:0;
-  padding: 0;
-  box-sizing: border-box;
-}
-`;
 export default JayseeApp;
