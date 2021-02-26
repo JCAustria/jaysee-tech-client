@@ -1,5 +1,5 @@
 export interface IMGProps {
-  image?: {
+  image: {
     url: string;
     alternativeText: string;
     name: string;

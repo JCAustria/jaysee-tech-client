@@ -2,7 +2,6 @@ import Link from 'next/link';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import Logo from './logo';
-import { BsCollection } from '@react-icons/all-files/bs/BsCollection';
 import { BsNewspaper } from '@react-icons/all-files/bs/BsNewspaper';
 import { BsFillHouseFill } from '@react-icons/all-files/bs/BsFillHouseFill';
 import { css } from '@emotion/react';
