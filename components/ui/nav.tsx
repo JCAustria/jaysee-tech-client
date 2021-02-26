@@ -9,9 +9,8 @@ import { css } from '@emotion/react';
 import { IconContext } from '@react-icons/all-files/lib';
 import { GlobalContext } from 'pages/_app';
 import { useContext } from 'react';
-
 const NavSection: React.FC = () => {
-  const { logo } = useContext(GlobalContext);
+  const { logo }: any = useContext(GlobalContext);
   console.log(logo);
   return (
     <>
