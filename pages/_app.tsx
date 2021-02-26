@@ -41,7 +41,7 @@ function JayseeApp({ Component, pageProps }: AppProps) {
   );
 }
 
-JayseeApp.getInitialProps = async (ctx) => {
+JayseeApp.getInitialProps = async (ctx: any) => {
   const appProps = await App.getInitialProps(ctx);
 
   const global = await fetchAPI('/global');
