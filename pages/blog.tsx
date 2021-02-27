@@ -9,17 +9,41 @@ import { fetchMedia } from 'lib/media';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 type BlogProps = {
-  posts: PostProps[];
+  posts?: PostProps[];
+  post: {
+    slug: string | number | null | undefined;
+    image: { url: string };
+    title: string;
+    description: string;
+  };
 };
 
 export type PostProps = {
   slug: string | number | null | undefined;
   image: { url: string };
   title: string;
-  excerpt: string;
+  description: string;
 };
 
 const Blog: React.FC<BlogProps> = ({ posts }) => {
+  const BlogCard: React.FC<BlogProps> = ({ post }) => (
+    <Link as={`/posts/${post?.slug}`} href="/posts/[id]" key={post.slug}>
+      <Anchor whileHover={{ scale: 1.05 }} key={post.slug}>
+        <Card article={post} key={post.slug}>
+          <CoverIMG src={fetchMedia(post.image)} key={post.slug} />
+          <ContentTop key={post.slug}>
+            <ContentCaption key={post.slug}>
+              <Heading key={post.slug}>{post.title}</Heading>
+            </ContentCaption>
+          </ContentTop>
+          <ContentBottom key={post.slug}>
+            <ContentExcerpt key={post.slug}>{post.description}</ContentExcerpt>
+          </ContentBottom>
+        </Card>
+      </Anchor>
+    </Link>
+  );
+
   return (
     <>
       <Nav />
@@ -27,29 +51,8 @@ const Blog: React.FC<BlogProps> = ({ posts }) => {
         <SC.Container>
           <BackButton />
           <SC.GridContainer>
-            {posts.map((post: PostProps) => {
-              return (
-                <Link as={`/posts/${post?.slug}`} href="/posts/[id]">
-                  <Anchor whileHover={{ scale: 1.05 }}>
-                    <Card article={post} key={post.slug}>
-                      <CoverIMG src={fetchMedia(post.image)} />
-                      <ContentTop>
-                        <ContentCaption>
-                          <Heading>{post.title}</Heading>
-                        </ContentCaption>
-                      </ContentTop>
-                      <ContentBottom>
-                        <ContentExcerpt>
-                          {post.excerpt} Lorem ipsum dolor sit amet consectetur,
-                          adipisicing elit. Id amet suscipit, est sed eveniet
-                          nesciunt earum! Sint est, soluta placeat officiis
-                          similique rerum enim, et eum, eius quos amet animi!
-                        </ContentExcerpt>
-                      </ContentBottom>
-                    </Card>
-                  </Anchor>
-                </Link>
-              );
+            {posts?.map((post: PostProps) => {
+              return <BlogCard post={post} />;
             })}
           </SC.GridContainer>
         </SC.Container>

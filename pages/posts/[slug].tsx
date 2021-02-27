@@ -8,49 +8,52 @@ import { fetchMedia } from 'lib/media';
 import Image from 'components/ui/image';
 import Moment from 'react-moment';
 import BackButton from 'components/ui/back-btn';
+import { ArticleProps } from 'types/article-props';
 
-// This is terrible, I hate this so much
 const Post = ({ article }: any) => {
   const imageUrl = fetchMedia(article.image);
+
   return (
     <>
       <Head>
         <meta name="description" />
       </Head>
       <Nav />
-      <PostSC.Container>
-        <PostSC.InnerContainer>
-          <PostSC.Content>
+      <Container>
+        <InnerContainer>
+          <Content>
             <BackButton />
-            <PostSC.ContentContainer>
-              <PostSC.ImageContainer>
+            <ContentContainer>
+              <ImageContainer>
                 <img src={imageUrl} alt={article.name} />
-              </PostSC.ImageContainer>
-              <ReactMarkdown source={article.content} escapeHtml={false} />
-              <hr />
-              <PostSC.AuthorContainer>
-                <PostSC.AuthorPicture>
-                  {article.author.picture && (
-                    <Image image={article.author.picture} />
-                  )}
-                </PostSC.AuthorPicture>
-                <PostSC.AuthorInfo>
-                  <p>By {article.author.name}</p>
-                  <p>
-                    <Moment format="MMM Do YYYY">{article.publishedAt}</Moment>
-                  </p>
-                </PostSC.AuthorInfo>
-              </PostSC.AuthorContainer>
-            </PostSC.ContentContainer>
-          </PostSC.Content>
-        </PostSC.InnerContainer>
-      </PostSC.Container>
+              </ImageContainer>
+              <MarkdownStyled>
+                <ReactMarkdown source={article.content} escapeHtml={false} />
+                <hr />
+                <AuthorContainerStyled article={article} />
+              </MarkdownStyled>
+            </ContentContainer>
+          </Content>
+        </InnerContainer>
+      </Container>
     </>
   );
 };
-type ArticleProps = {
-  article: string[];
-  slug: string[];
+
+const AuthorContainer = ({ article }: any) => {
+  return (
+    <>
+      <AuthorPicture>
+        {article.author.picture && <Image image={article.author.picture} />}
+      </AuthorPicture>
+      <AuthorInfo>
+        <p>By {article.author.name}</p>
+        <p>
+          <Moment format="MMM Do YYYY">{article.publishedAt}</Moment>
+        </p>
+      </AuthorInfo>
+    </>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -77,91 +80,109 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export default Post;
 
-class PostSC {
-  static Container = styled.div`
-    display: flex;
-    flex-direction: column;
-  `;
-  static InnerContainer = styled.div`
-    font-family: 'Raleway', sans-serif;
-    padding: 0rem 1rem 8rem 1rem;
-    background-color: rgba(248, 249, 255, 1);
-    @media screen and (min-width: 60em) {
-      padding: 1rem 7rem;
-      margin: 0 auto;
-    }
-  `;
-  static ImageContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    img {
-      margin: 0 auto;
-      padding: 4rem 1rem 0rem 1rem;
-      max-width: 100%;
-      height: auto;
-    }
-  `;
-  static AuthorContainer = styled.figure`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const InnerContainer = styled.div`
+  font-family: 'Raleway', sans-serif;
+  padding: 0rem 1rem 8rem 1rem;
+  background-color: rgba(248, 249, 255, 1);
+  @media screen and (min-width: 60em) {
+    padding: 1rem 7rem;
+    margin: 0 auto;
+  }
+`;
+const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  img {
+    margin: 0 auto;
+    padding: 4rem 1rem 0rem 1rem;
+    max-width: 100%;
+    height: auto;
+  }
+`;
+const AuthorContainerStyled = styled(AuthorContainer)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  @media screen and (min-width: 60em) {
+    flex-direction: row;
+    padding: 0 20rem;
+    margin: 0 auto;
+  }
+`;
+const AuthorPicture = styled.div`
+  width: fit-content;
+  padding: 1rem;
+  margin: 0 auto;
+`;
+const AuthorInfo = styled.div`
+  width: fit-content;
+  margin: 0 auto;
+  @media screen and (min-width: 60em) {
+    margin: auto;
+  }
+`;
+const ContentContainer = styled.div`
+  background: linear-gradient(
+    180deg,
+    rgba(223, 227, 255, 1) 0%,
+    rgba(248, 249, 255, 1) 15%
+  );
+  padding: 0;
+  border-radius: 5px;
+`;
+
+const MarkdownStyled = styled.div`
+  padding: 0;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     text-align: center;
+  }
+  & > h1 {
+    font-size: 1.2rem;
     @media screen and (min-width: 60em) {
-      flex-direction: row;
+      font-size: 4rem;
     }
-  `;
-  static AuthorPicture = styled.div`
-    padding: 1rem;
-  `;
-  static AuthorInfo = styled.div`
-    padding-left: 1rem;
-  `;
-  static ContentContainer = styled.div`
-    background: linear-gradient(
-      180deg,
-      rgba(223, 227, 255, 1) 0%,
-      rgba(248, 249, 255, 1) 15%
-    );
-    padding: 0;
-    border-radius: 5px;
-  `;
-  static Content = styled.article`
-    h1 {
-      line-height: 1;
-      font-size: 2rem;
-      text-align: center;
-      @media screen and (min-width: 60em) {
-        font-size: 6rem;
-        padding: 0 20rem;
-      }
-    }
-    p {
-      font-size: 1rem;
-      letter-spacing: 0.5pt;
-      line-height: 1.5;
-      padding: 0.96rem;
-      @media screen and (min-width: 60em) {
-        padding: 0 18rem;
-        line-height: 2.5;
-        font-size: 1.6rem;
-      }
-    }
-    iframe {
-      padding: 0 1.2rem;
-      max-width: 100%;
-      @media screen and (min-width: 60em) {
-        padding: 0rem;
-      }
-    }
+  }
+
+  & > h2 {
+    font-size: 1.1rem;
     @media screen and (min-width: 60em) {
-      padding: 0 4rem;
-      iframe {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0 auto;
+      font-size: 3.5rem;
+    }
+  }
+  ul,
+  li {
+    padding: 1rem 0;
+    @media screen and (min-width: 60em) {
+      font-size: 1.4rem;
+    }
+    ::marker {
+      font-size: 1.2rem;
+      @media screen and (min-width: 60em) {
+        font-size: 1.4rem;
       }
     }
-  `;
-}
+  }
+  & > p {
+    font-size: 0.95rem;
+    padding: 0 1.2rem;
+    line-height: 2;
+    @media screen and (min-width: 60em) {
+      font-size: 1.4rem;
+    }
+  }
+  @media screen and (min-width: 60em) {
+    padding: 0 25rem;
+  }
+`;
+const Content = styled.article``;
